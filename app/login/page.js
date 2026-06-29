@@ -8,6 +8,9 @@ import Link from "next/link";
 import {
     Sparkles,
     Loader2,
+    Crown,
+    ChefHat,
+    Info,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,6 +48,31 @@ export default function LoginPage() {
         }
     };
 
+    const handleQuickLogin = async (demoEmail, demoPassword) => {
+        setLoading(true);
+        setError("");
+        setEmail(demoEmail);
+        setPassword(demoPassword);
+
+        try {
+            const result = await signIn("credentials", {
+                email: demoEmail,
+                password: demoPassword,
+                redirect: false,
+            });
+
+            if (result.error) {
+                setError("Demo login failed. Please try manual login: admin@petpooja.com / admin123");
+            } else {
+                router.push(demoEmail.includes("staff") ? "/kitchen" : "/dashboard");
+            }
+        } catch (err) {
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
             {/* Background Accents */}
@@ -72,6 +100,54 @@ export default function LoginPage() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
+                        <div className="bg-orange-50/50 dark:bg-slate-900 border border-orange-100 dark:border-slate-800 p-4 rounded-2xl space-y-3">
+                            <div className="flex items-center gap-1.5 px-0.5">
+                                <Sparkles className="text-orange-500 w-4 h-4 animate-pulse" />
+                                <span className="text-[11px] font-black text-orange-600 uppercase tracking-widest"></span>
+                            </div>
+                            <p className="text-[11px] text-slate-500 leading-normal px-0.5">
+                                Explore the live dashboard features instantly using the quick access buttons below:
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <button
+                                    type="button"
+                                    onClick={() => handleQuickLogin("admin@petpooja.com", "admin123")}
+                                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-orange-200 bg-white hover:bg-orange-100/50 text-slate-800 transition-all hover:scale-[1.01] active:scale-[0.99] hover:shadow-sm text-center group"
+                                >
+                                    <div className="flex items-center gap-1.5 font-bold text-xs text-orange-700">
+                                        <Crown className="w-3.5 h-3.5" />
+                                        <span>Demo Admin</span>
+                                    </div>
+                                    <span className="text-[9px] text-slate-400 mt-0.5 font-semibold group-hover:text-slate-500">Full Executive Panel</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => handleQuickLogin("staff@petpooja.com", "staff123")}
+                                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-emerald-200 bg-white hover:bg-emerald-100/50 text-slate-800 transition-all hover:scale-[1.01] active:scale-[0.99] hover:shadow-sm text-center group"
+                                >
+                                    <div className="flex items-center gap-1.5 font-bold text-xs text-emerald-700">
+                                        <ChefHat className="w-3.5 h-3.5" />
+                                        <span>Demo Kitchen</span>
+                                    </div>
+                                    <span className="text-[9px] text-slate-400 mt-0.5 font-semibold group-hover:text-slate-500">Live KOT Monitor</span>
+                                </button>
+                            </div>
+                            <div className="flex items-start gap-1.5 px-0.5 pt-1 text-[10px] text-slate-400 leading-normal">
+                                <Info className="w-3.5 h-3.5 shrink-0 mt-0.5 text-slate-400" />
+                                <span>
+                                    Signing in with Google or a new sign-up automatically guides you to the <strong>Admin Dashboard</strong> as a new workspace owner.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="relative">
+                            <div className="absolute inset-0 flex items-center">
+                                <Separator className="w-full" />
+                            </div>
+                            <div className="relative flex justify-center text-xs uppercase">
+                                <span className="bg-white px-2 text-slate-400 font-bold tracking-widest text-[9px]">Or Sign In Manually</span>
+                            </div>
+                        </div>
                         <form onSubmit={handleSubmit} className="space-y-3">
                             <div className="space-y-1">
                                 <Input
