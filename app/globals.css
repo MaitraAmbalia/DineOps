@@ -3,7 +3,7 @@
 @theme {
   --font-sans: "Inter", "Outfit", system-ui, sans-serif;
 
-  /* Petpooja High-End Orange Palette */
+  /* Dineops High-End Orange Palette */
   --color-primary: #f97316;
   --color-primary-foreground: #ffffff;
 
@@ -62,6 +62,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.dark {
+  --color-background: #020617;
+  --color-foreground: #f8fafc;
+  --color-card: #0f172a;
+  --color-card-foreground: #f8fafc;
+  --color-popover: #0f172a;
+  --color-popover-foreground: #f8fafc;
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f8fafc;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #1e293b;
+  --color-accent-foreground: #f8fafc;
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -75,6 +92,11 @@
 /* Custom Utilities */
 .glass {
   @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.dark .glass {
+  background-color: rgba(15, 23, 42, 0.75);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .gradient-orange {

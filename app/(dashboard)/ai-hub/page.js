@@ -22,33 +22,33 @@ const SuggestionCard = ({ type, title, description, badge, items, actionLabel, i
         layout
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="glass p-8 rounded-[32px] border border-slate-200/50 shadow-premium flex flex-col gap-6 relative overflow-hidden group"
+        className="glass p-8 rounded-[32px] border border-slate-200/50 dark:border-slate-800 shadow-premium flex flex-col gap-6 relative overflow-hidden group"
     >
         <div className="flex justify-between items-start mb-2">
             <div className="flex items-center gap-3">
-                <div className={`p-3 rounded-2xl ${type === 'combo' ? 'bg-orange-500' : 'bg-blue-500'} bg-opacity-10`}>
-                    {type === 'combo' ? <ShoppingBag className="text-orange-600" size={24} /> : <TrendingUp className="text-blue-600" size={24} />}
+                <div className={`p-3 rounded-2xl ${type === 'combo' ? 'bg-orange-500/10 text-orange-500' : 'bg-blue-500/10 text-blue-500'}`}>
+                    {type === 'combo' ? <ShoppingBag size={24} /> : <TrendingUp size={24} />}
                 </div>
                 <div>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{badge}</span>
-                    <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{title}</h3>
                 </div>
             </div>
             <div className="text-right">
-                <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100 uppercase tracking-wide">
+                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1.5 rounded-xl border border-emerald-100 dark:border-emerald-800/50 uppercase tracking-wide">
                     Impact: {impact}
                 </span>
             </div>
         </div>
 
-        <p className="text-slate-600 font-medium leading-relaxed">{description}</p>
+        <p className="text-slate-600 dark:text-slate-300 font-medium leading-relaxed">{description}</p>
 
         {items && (
             <div className="flex items-center gap-2 flex-wrap">
                 {items.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-xl">
-                        <div className="w-2 h-2 rounded-full bg-slate-300"></div>
-                        <span className="text-xs font-bold text-slate-600">{item}</span>
+                    <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl">
+                        <div className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+                        <span className="text-xs font-bold text-slate-600 dark:text-slate-300">{item}</span>
                     </div>
                 ))}
             </div>
@@ -56,7 +56,7 @@ const SuggestionCard = ({ type, title, description, badge, items, actionLabel, i
 
         <button
             onClick={onApprove}
-            className="mt-4 w-full gradient-primary text-white font-bold py-4 rounded-2xl shadow-xl shadow-orange-200 hover:shadow-orange-300 transform active:scale-[0.98] transition-all flex items-center justify-center gap-2 group"
+            className="mt-4 w-full gradient-orange text-white font-bold py-4 rounded-2xl shadow-xl shadow-orange-500/20 hover:shadow-orange-500/30 transform active:scale-[0.98] transition-all flex items-center justify-center gap-2 group cursor-pointer"
         >
             <Zap size={18} className="group-hover:animate-pulse" />
             {actionLabel}
@@ -79,21 +79,21 @@ export default function AIHubPage() {
             <div className="space-y-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 rounded-full border border-orange-100 mb-2">
-                            <Sparkles size={14} className="text-orange-500" />
-                            <span className="text-[10px] font-bold text-orange-600 uppercase tracking-widest">Revenue Engine Active</span>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 dark:bg-orange-950/40 rounded-full border border-orange-100 dark:border-orange-900/40 mb-2">
+                            <Sparkles size={14} className="text-orange-500 dark:text-orange-400" />
+                            <span className="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest">Revenue Engine Active</span>
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight italic">AI Hub</h1>
-                        <p className="text-slate-500 font-medium">1-Click revenue enhancement strategies</p>
+                        <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight italic">AI Hub</h1>
+                        <p className="text-slate-500 dark:text-slate-400 font-medium">1-Click revenue enhancement strategies</p>
                     </div>
 
-                    <div className="glass px-6 py-4 rounded-3xl border border-emerald-100 bg-emerald-50/30 flex items-center gap-4 shadow-sm">
-                        <div className="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                    <div className="glass px-6 py-4 rounded-3xl border border-emerald-100 dark:border-emerald-800/40 bg-emerald-50/30 dark:bg-emerald-950/20 flex items-center gap-4 shadow-sm">
+                        <div className="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-200 dark:shadow-none">
                             <CheckCircle2 size={24} />
                         </div>
                         <div>
-                            <p className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Strategies Approved</p>
-                            <h4 className="text-2xl font-black text-slate-900 leading-none mt-0.5">{approvedCount}</h4>
+                            <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Strategies Approved</p>
+                            <h4 className="text-2xl font-black text-slate-900 dark:text-white leading-none mt-0.5">{approvedCount}</h4>
                         </div>
                     </div>
                 </div>
@@ -142,14 +142,14 @@ export default function AIHubPage() {
 
                         <motion.div
                             whileHover={{ scale: 1.02 }}
-                            className="glass p-8 rounded-[32px] border border-orange-100 bg-gradient-to-br from-orange-50/50 to-white flex flex-col items-center justify-center text-center gap-4 cursor-pointer min-h-[200px]"
+                            className="glass p-8 rounded-[32px] border border-orange-100 dark:border-slate-800 bg-gradient-to-br from-orange-50/50 to-white dark:from-slate-900 dark:to-slate-800 flex flex-col items-center justify-center text-center gap-4 cursor-pointer min-h-[200px]"
                         >
-                            <div className="w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center text-orange-500">
+                            <div className="w-14 h-14 rounded-full bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-lg flex items-center justify-center text-orange-500">
                                 <ChevronRight size={28} />
                             </div>
                             <div>
-                                <h4 className="font-bold text-slate-900">View 12 More Strategies</h4>
-                                <p className="text-sm text-slate-500 font-medium">Updated every 6 hours based on sales velocity</p>
+                                <h4 className="font-bold text-slate-900 dark:text-white">View 12 More Strategies</h4>
+                                <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">Updated every 6 hours based on sales velocity</p>
                             </div>
                         </motion.div>
                     </div>

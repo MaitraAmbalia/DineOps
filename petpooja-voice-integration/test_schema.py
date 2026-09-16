@@ -14,7 +14,7 @@ async def check_schema():
 
     print(f"Connecting to MongoDB...")
     client = AsyncIOMotorClient(MONGODB_URI, tlsCAFile=certifi.where())
-    db = client.petpooja_db
+    db = client.dineops_db
     
     collections = await db.list_collection_names()
     print("\n--- Collections Found ---")

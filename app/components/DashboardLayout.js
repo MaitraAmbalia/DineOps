@@ -142,7 +142,7 @@ export default function DashboardLayout({ children }) {
                                     transition={{ duration: 0.2 }}
                                     className={cn("font-extrabold text-lg tracking-tight whitespace-nowrap", isDarkMode ? "text-white" : "text-slate-900")}
                                 >
-                                    {isStaff ? "Kitchen" : "Petpooja-Copilot"}
+                                    {isStaff ? "Kitchen" : "Dineops-Copilot"}
                                 </motion.span>
                             )}
                         </AnimatePresence>
@@ -270,8 +270,8 @@ export default function DashboardLayout({ children }) {
 
                     <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
                         <div className="flex items-center gap-3">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Burger_King_2020.svg" alt="Burger King" className="w-8 h-8 object-contain" />
-                            <span className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Burger King</span>
+                            <img src="/logo.svg" alt="Dineops" className="w-8 h-8 object-contain" />
+                            <span className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Dineops</span>
                         </div>
                     </div>
 

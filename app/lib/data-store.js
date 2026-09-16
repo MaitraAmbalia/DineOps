@@ -577,8 +577,8 @@ export const LIVE_STATS = {
 
 // Mock Auth Users
 export const USERS = [
-    { id: "1", name: "Admin User", email: "admin@petpooja.com", role: "ADMIN" },
-    { id: "2", name: "Staff Member", email: "staff@petpooja.com", role: "STAFF" },
+    { id: "1", name: "Admin User", email: "admin@dineops.com", role: "ADMIN" },
+    { id: "2", name: "Staff Member", email: "staff@dineops.com", role: "STAFF" },
 ];
 
 // Call Analytics Data

@@ -37,7 +37,7 @@ export default function LoginPage() {
             });
 
             if (result.error) {
-                setError("Invalid credentials. Try admin@petpooja.com / admin123  OR  staff@petpooja.com / staff123");
+                setError("Invalid credentials. Try admin@dineops.com / admin123  OR  staff@dineops.com / staff123");
             } else {
                 router.push("/dashboard");
             }
@@ -62,7 +62,7 @@ export default function LoginPage() {
             });
 
             if (result.error) {
-                setError("Demo login failed. Please try manual login: admin@petpooja.com / admin123");
+                setError("Demo login failed. Please try manual login: admin@dineops.com / admin123");
             } else {
                 router.push(demoEmail.includes("staff") ? "/kitchen" : "/dashboard");
             }
@@ -88,7 +88,7 @@ export default function LoginPage() {
                     <div className="bg-orange-500 p-2.5 rounded-2xl shadow-lg shadow-orange-100 mb-4">
                         <Sparkles className="text-white w-6 h-6" />
                     </div>
-                    <h1 className="text-2xl font-bold tracking-tight text-slate-900 text-center">Petpooja Copilot</h1>
+                    <h1 className="text-2xl font-bold tracking-tight text-slate-900 text-center">Dineops Copilot</h1>
                     <p className="text-slate-500 text-sm mt-1">Sign in to your restaurant workspace</p>
                 </div>
 
@@ -111,7 +111,7 @@ export default function LoginPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                 <button
                                     type="button"
-                                    onClick={() => handleQuickLogin("admin@petpooja.com", "admin123")}
+                                    onClick={() => handleQuickLogin("admin@dineops.com", "admin123")}
                                     className="flex flex-col items-center justify-center p-3 rounded-xl border border-orange-200 bg-white hover:bg-orange-100/50 text-slate-800 transition-all hover:scale-[1.01] active:scale-[0.99] hover:shadow-sm text-center group"
                                 >
                                     <div className="flex items-center gap-1.5 font-bold text-xs text-orange-700">
@@ -122,7 +122,7 @@ export default function LoginPage() {
                                 </button>
                                 <button
                                     type="button"
-                                    onClick={() => handleQuickLogin("staff@petpooja.com", "staff123")}
+                                    onClick={() => handleQuickLogin("staff@dineops.com", "staff123")}
                                     className="flex flex-col items-center justify-center p-3 rounded-xl border border-emerald-200 bg-white hover:bg-emerald-100/50 text-slate-800 transition-all hover:scale-[1.01] active:scale-[0.99] hover:shadow-sm text-center group"
                                 >
                                     <div className="flex items-center gap-1.5 font-bold text-xs text-emerald-700">

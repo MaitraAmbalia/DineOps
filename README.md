@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="public/github_assets/logo.svg" alt="Petpooja Copilot" width="80" />
-  <h1>🍔 Petpooja-Copilot</h1>
+  <img src="public/logo.svg" alt="Dineops Copilot" width="80" />
+  <h1>🍔 Dineops-Copilot</h1>
   <p><em>An intelligent, real-time Voice AI & Kitchen Display operational dashboard built for modern restaurants.</em></p>
 
   <p>
@@ -14,7 +14,7 @@
 
 ---
 
-## � Dashboard Previews
+##  Dashboard Previews
 
 <div align="center">
   <img src="public/github_assets/dashboard.png" alt="Dashboard Overview" width="800" style="border-radius: 8px; margin-bottom: 20px;" />
@@ -24,7 +24,7 @@
 
 ---
 
-## �🚀 Features at a Glance
+## 🚀 Features at a Glance
 
 * **🎙️ Live Voice Orders:** Monitor incoming AI calls, view live customer-AI transcripts, and track success/failure rates.
 * **👨‍🍳 Real-Time KOT System:** Kitchen Order Tickets automatically sync to specific stations (e.g. Grill, Drinks) with dynamic SLA countdown timers.
@@ -75,7 +75,7 @@ The core application exposes the following internal endpoints for the dashboard 
 First, navigate into the project directory and install the required dependencies:
 
 ```bash
-cd petpooja
+cd dineops
 npm install
 ```
 
@@ -99,7 +99,7 @@ GOOGLE_CLIENT_SECRET=<your_google_oauth_client_secret>
 # Environment indicator
 NODE_ENV=development
 ```
-> **💡 Tip:** The application automatically connects to a secondary `petpooja_db` instance extracted from your primary connection string to parse external Voice AI webhooks. 
+> **💡 Tip:** The application automatically connects to a secondary `dineops_db` instance extracted from your primary connection string to parse external Voice AI webhooks. 
 
 ### 3️⃣ Start the Dashboard
 To start the Next.js server with Turbopack enabled:
@@ -117,7 +117,7 @@ You can now hit **`http://localhost:3000`** in your browser!
 The application utilizes **NextAuth.js**. A user must be authenticated to access the dashboard.
 
 ### 🌐 Live Demo
-You can try the live application here: **[https://petpooja-intel.vercel.app](https://petpooja-intel.vercel.app)**
+You can try the live application here: **[https://dineops-intel.vercel.app](https://dineops-intel.vercel.app)**
 
 ### 🛡️ Role-Based Access Control (RBAC) Matrix
 
@@ -133,12 +133,12 @@ If you are exploring the live demo or developing locally and need to test specif
 
 ### 👑 Administrator Account
 *Access: Full access to Dashboard, Menu Editing, Analytics, and Live Transcripts.*
-- **Email:** `admin@petpooja.com`
+- **Email:** `admin@dineops.com`
 - **Password:** `admin123`
 
 ### 👨‍🍳 Kitchen Staff Account
 *Access: Restricted specifically to the Kitchen Display panel to view live KOTs. All other routes bounce back to `/kitchen`.*
-- **Email:** `staff@petpooja.com`
+- **Email:** `staff@dineops.com`
 - **Password:** `staff123`
 
 ---

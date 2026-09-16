@@ -11,7 +11,7 @@ load_dotenv()
 # --- Setup MongoDB Connection ---
 MONGODB_URI = os.getenv("MONGODB_URI")
 client = AsyncIOMotorClient(MONGODB_URI, tlsCAFile=certifi.where())
-db = client.petpooja_db  # Using 'petpooja_db' as default database for writes
+db = client.dineops_db  # Using 'dineops_db' as default database for writes
 test_db = client.test  # Using 'test' database for reading datasets
 
 # --- Database Collections ---

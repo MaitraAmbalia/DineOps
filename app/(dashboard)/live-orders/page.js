@@ -100,18 +100,18 @@ function mapOrderToUI(dbOrder) {
 const CallAnalyticsStats = ({ analytics, loading }) => (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-            { label: "Total Calls", value: analytics.totalCalls, icon: PhoneIncoming, color: "text-blue-600", bg: "bg-blue-50" },
-            { label: "Successful", value: analytics.successfulCalls, icon: CheckCircle2, color: "text-emerald-600", bg: "bg-emerald-50" },
-            { label: "Human Transfers", value: analytics.humanTransfers, icon: Headphones, color: "text-orange-600", bg: "bg-orange-50" },
-            { label: "Pending", value: analytics.pendingCallbacks, icon: Clock, color: "text-rose-600", bg: "bg-rose-50" },
+            { label: "Total Calls", value: analytics.totalCalls, icon: PhoneIncoming, color: "text-blue-600 dark:text-blue-400", bg: "bg-blue-50 dark:bg-blue-950/40" },
+            { label: "Successful", value: analytics.successfulCalls, icon: CheckCircle2, color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-50 dark:bg-emerald-950/40" },
+            { label: "Human Transfers", value: analytics.humanTransfers, icon: Headphones, color: "text-orange-600 dark:text-orange-400", bg: "bg-orange-50 dark:bg-orange-950/40" },
+            { label: "Pending", value: analytics.pendingCallbacks, icon: Clock, color: "text-rose-600 dark:text-rose-400", bg: "bg-rose-50 dark:bg-rose-950/40" },
         ].map((stat, i) => (
-            <div key={i} className="glass p-5 rounded-[24px] border border-slate-200/50 shadow-sm flex items-center gap-4">
+            <div key={i} className="glass p-5 rounded-[24px] border border-slate-200/50 dark:border-slate-800 shadow-sm flex items-center gap-4">
                 <div className={`p-3 rounded-2xl ${stat.bg} ${stat.color}`}>
                     <stat.icon size={20} />
                 </div>
                 <div>
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</p>
-                    <h3 className="text-xl font-black text-slate-900">
+                    <p className="text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest">{stat.label}</p>
+                    <h3 className="text-xl font-black text-slate-900 dark:text-white">
                         {loading ? <span className="animate-pulse">—</span> : stat.value}
                     </h3>
                 </div>
@@ -123,10 +123,10 @@ const CallAnalyticsStats = ({ analytics, loading }) => (
 const OrderCard = ({ order, isActive, onClick }) => {
     const getKOTStyle = (status) => {
         switch (status) {
-            case 'PENDING': return 'bg-amber-100 text-amber-600 border-amber-200';
-            case 'PREPARING': return 'bg-blue-100 text-blue-600 border-blue-200';
-            case 'READY': return 'bg-emerald-100 text-emerald-600 border-emerald-200';
-            default: return 'bg-slate-100 text-slate-400 border-slate-200';
+            case 'PENDING': return 'bg-amber-100 text-amber-600 border-amber-200 dark:bg-amber-950/50 dark:text-amber-400 dark:border-amber-800/50';
+            case 'PREPARING': return 'bg-blue-100 text-blue-600 border-blue-200 dark:bg-blue-950/50 dark:text-blue-400 dark:border-blue-800/50';
+            case 'READY': return 'bg-emerald-100 text-emerald-600 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-400 dark:border-emerald-800/50';
+            default: return 'bg-slate-100 text-slate-400 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700';
         }
     };
 
@@ -135,12 +135,12 @@ const OrderCard = ({ order, isActive, onClick }) => {
             onClick={onClick}
             whileHover={{ x: 4 }}
             className={`p-6 rounded-3xl border transition-all cursor-pointer group ${isActive
-                ? "bg-slate-900 border-slate-900 shadow-xl shadow-slate-200"
-                : "glass border-slate-200/50 hover:border-slate-300"
+                ? "bg-slate-900 border-slate-800 shadow-xl shadow-slate-950/40 text-white dark:bg-slate-800 dark:border-slate-700"
+                : "bg-white/80 dark:bg-slate-900/80 border-slate-200/50 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm"
                 }`}
         >
             <div className="flex justify-between items-start mb-4">
-                <div className={`p-2.5 rounded-xl ${isActive ? "bg-white/10" : "bg-orange-50"}`}>
+                <div className={`p-2.5 rounded-xl ${isActive ? "bg-white/10" : "bg-orange-50 dark:bg-orange-950/40"}`}>
                     {order.status === 'PENDING_CALLBACK' ?
                         <CornerUpRight className={isActive ? "text-white" : "text-rose-500"} size={18} /> :
                         <PhoneIncoming className={isActive ? "text-white" : "text-orange-500"} size={18} />
@@ -158,19 +158,19 @@ const OrderCard = ({ order, isActive, onClick }) => {
                 </div>
             </div>
 
-            <h4 className={`font-bold ${isActive ? "text-white" : "text-slate-900"}`}>{order.customer}</h4>
-            <p className={`text-xs mt-1 font-medium ${isActive ? "text-slate-400" : "text-slate-500"}`}>
+            <h4 className={`font-bold ${isActive ? "text-white" : "text-slate-900 dark:text-white"}`}>{order.customer}</h4>
+            <p className={`text-xs mt-1 font-medium ${isActive ? "text-slate-400" : "text-slate-500 dark:text-slate-400"}`}>
                 {order.status === 'COMPLETED' ? 'Order Processed' : order.status === 'TRANSFERRED' ? 'Human Handling' : 'Pending Callback'}
             </p>
 
             <div className="mt-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Activity size={14} className={isActive ? "text-emerald-400" : "text-emerald-500"} />
-                    <span className={`text-[10px] font-bold uppercase tracking-widest ${isActive ? "text-emerald-400" : "text-emerald-600"}`}>
+                    <span className={`text-[10px] font-bold uppercase tracking-widest ${isActive ? "text-emerald-400" : "text-emerald-600 dark:text-emerald-400"}`}>
                         {order.callType.replace('_', ' ')}
                     </span>
                 </div>
-                <ChevronRight size={16} className={isActive ? "text-white/30" : "text-slate-300 group-hover:translate-x-1 transition-transform"} />
+                <ChevronRight size={16} className={isActive ? "text-white/30" : "text-slate-300 dark:text-slate-600 group-hover:translate-x-1 transition-transform"} />
             </div>
         </motion.div>
     );
@@ -235,7 +235,7 @@ export default function LiveOrdersPage() {
                     <div className="flex gap-2">
                         <button
                             onClick={fetchOrders}
-                            className="px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition-all flex items-center gap-2"
+                            className="px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center gap-2"
                         >
                             <RefreshCw size={16} /> Refresh
                         </button>
@@ -263,8 +263,8 @@ export default function LiveOrdersPage() {
                             ))
                         ) : null}
 
-                        <div className="p-6 border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center text-center gap-3 opacity-50">
-                            <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                        <div className="p-6 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center text-center gap-3 opacity-50">
+                            <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
                                 <Clock size={20} />
                             </div>
                             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -274,7 +274,7 @@ export default function LiveOrdersPage() {
                     </div>
 
                     {/* Details Pane */}
-                    <div className="flex-1 glass rounded-[40px] border border-slate-200/50 shadow-premium flex flex-col overflow-hidden">
+                    <div className="flex-1 glass rounded-[40px] border border-slate-200/50 dark:border-slate-800 shadow-premium flex flex-col overflow-hidden">
                         <AnimatePresence mode="wait">
                             {selectedOrder ? (
                                 <motion.div
@@ -285,18 +285,18 @@ export default function LiveOrdersPage() {
                                     className="flex flex-col h-full"
                                 >
                                     {/* Pane Header */}
-                                    <div className="p-8 border-b border-slate-100 flex justify-between items-center bg-white/50">
+                                    <div className="p-8 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-white/50 dark:bg-slate-900/50">
                                         <div className="flex items-center gap-6">
-                                            <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center text-white shadow-lg">
+                                            <div className="w-14 h-14 rounded-2xl bg-slate-900 dark:bg-slate-800 border border-transparent dark:border-slate-700 flex items-center justify-center text-white shadow-lg">
                                                 <User size={28} />
                                             </div>
                                             <div className="space-y-1">
-                                                <h3 className="text-2xl font-black text-slate-900 tracking-tight">{selectedOrder.customer}</h3>
+                                                <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">{selectedOrder.customer}</h3>
                                                 <div className="flex items-center gap-4">
                                                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
                                                         <Phone size={12} className="text-orange-500" /> {selectedOrder.phoneNumber}
                                                     </p>
-                                                    <div className="w-1 h-1 rounded-full bg-slate-200" />
+                                                    <div className="w-1 h-1 rounded-full bg-slate-200 dark:bg-slate-700" />
                                                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
                                                         <Clock size={12} className="text-blue-500" /> {selectedOrder.orderType}
                                                     </p>
@@ -304,30 +304,30 @@ export default function LiveOrdersPage() {
                                             </div>
                                         </div>
                                         <div className="flex gap-3">
-                                            <button className="px-5 py-3 rounded-2xl border border-slate-200 font-black text-xs text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2 uppercase tracking-wider">
+                                            <button className="px-5 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 font-black text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center gap-2 uppercase tracking-wider">
                                                 <Headphones size={18} /> Transfer to Human
                                             </button>
-                                            <button className="px-5 py-3 rounded-2xl bg-rose-500 text-white font-black text-xs shadow-lg shadow-rose-100 hover:bg-rose-600 transition-all uppercase tracking-wider">
+                                            <button className="px-5 py-3 rounded-2xl bg-rose-500 text-white font-black text-xs shadow-lg shadow-rose-100 dark:shadow-none hover:bg-rose-600 transition-all uppercase tracking-wider">
                                                 Close Call
                                             </button>
                                         </div>
                                     </div>
 
                                     {/* Order Meta Info Bar */}
-                                    <div className="px-8 py-3 bg-slate-50 border-b border-slate-100 flex gap-8">
+                                    <div className="px-8 py-3 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-100 dark:border-slate-800 flex gap-8">
                                         <div className="flex items-center gap-2">
                                             <Hash size={12} className="text-slate-400" />
-                                            <span className="text-[10px] font-black text-slate-500 uppercase tracking-wider">Order ID:</span>
-                                            <span className="text-[10px] font-bold text-slate-900">{selectedOrder.id}</span>
+                                            <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Order ID:</span>
+                                            <span className="text-[10px] font-bold text-slate-900 dark:text-white">{selectedOrder.id}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <Receipt size={12} className="text-slate-400" />
-                                            <span className="text-[10px] font-black text-slate-500 uppercase tracking-wider">Type:</span>
-                                            <span className="text-[10px] font-bold text-slate-900 capitalize">{selectedOrder.orderType}</span>
+                                            <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Type:</span>
+                                            <span className="text-[10px] font-bold text-slate-900 dark:text-white capitalize">{selectedOrder.orderType}</span>
                                         </div>
                                         <div className="ml-auto flex items-center gap-2">
                                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider">Upsell:</span>
-                                            <span className={`text-[10px] font-black uppercase tracking-wider ${selectedOrder.aiUpsell !== "None" ? "text-emerald-600" : "text-slate-400"}`}>
+                                            <span className={`text-[10px] font-black uppercase tracking-wider ${selectedOrder.aiUpsell !== "None" ? "text-emerald-600 dark:text-emerald-400" : "text-slate-400"}`}>
                                                 {selectedOrder.aiUpsell}
                                             </span>
                                         </div>
@@ -344,18 +344,18 @@ export default function LiveOrdersPage() {
                                                     selectedOrder.uiMessages.map((msg, idx) => (
                                                         <div key={idx} className={`flex gap-4 ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
                                                             <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center text-[10px] font-black ${msg.role === "ai"
-                                                                ? "bg-orange-100 text-orange-600"
-                                                                : "bg-slate-200 text-slate-600 italic"
+                                                                ? "bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400"
+                                                                : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 italic"
                                                                 }`}>
                                                                 {msg.role === "ai" ? "AI" : "CU"}
                                                             </div>
                                                             <div className={`p-4 rounded-2xl max-w-[80%] ${msg.role === "ai"
-                                                                ? "bg-orange-50 rounded-tl-none border border-orange-100"
-                                                                : "bg-white rounded-tr-none border border-slate-200 shadow-sm"
+                                                                ? "bg-orange-50 dark:bg-orange-950/40 rounded-tl-none border border-orange-100 dark:border-orange-900/40"
+                                                                : "bg-white dark:bg-slate-800 rounded-tr-none border border-slate-200 dark:border-slate-700 shadow-sm"
                                                                 }`}>
                                                                 <p className={`text-sm font-medium leading-relaxed ${msg.role === "ai"
-                                                                    ? "text-orange-900"
-                                                                    : "text-slate-700 italic"
+                                                                    ? "text-orange-950 dark:text-orange-200"
+                                                                    : "text-slate-700 dark:text-slate-200 italic"
                                                                     }`}>
                                                                     {msg.role === "human" || msg.role === "user" ? `"${msg.text}"` : msg.text}
                                                                 </p>
@@ -364,7 +364,7 @@ export default function LiveOrdersPage() {
                                                     ))
                                                 ) : (
                                                     <div className="text-center py-12 opacity-40">
-                                                        <MessageSquare size={32} className="text-slate-300 mx-auto mb-3" />
+                                                        <MessageSquare size={32} className="text-slate-300 dark:text-slate-600 mx-auto mb-3" />
                                                         <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">No transcript available</p>
                                                     </div>
                                                 )}
@@ -372,17 +372,17 @@ export default function LiveOrdersPage() {
                                         </div>
 
                                         {/* JSON Output Section */}
-                                        <div className="w-80 border-l border-slate-100 bg-slate-50/50 p-8 overflow-y-auto custom-scrollbar">
+                                        <div className="w-80 border-l border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 p-8 overflow-y-auto custom-scrollbar">
                                             <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
                                                 <FileJson size={14} /> Order Payload (JSON)
                                             </h4>
-                                            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                                            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
                                                 {selectedOrder.structuredJson.items.length > 0 ? (
-                                                    <div className="divide-y divide-slate-100">
+                                                    <div className="divide-y divide-slate-100 dark:divide-slate-800">
                                                         {selectedOrder.structuredJson.items.map((item, idx) => (
-                                                            <div key={idx} className="p-4 flex items-start justify-between hover:bg-slate-50 transition-colors">
+                                                            <div key={idx} className="p-4 flex items-start justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                                                                 <div>
-                                                                    <p className="text-sm font-bold text-slate-900">{item.name}</p>
+                                                                    <p className="text-sm font-bold text-slate-900 dark:text-white">{item.name}</p>
                                                                     {item.addons && item.addons.length > 0 && (
                                                                         <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-wider">
                                                                             + {item.addons.join(", ")}
@@ -390,7 +390,7 @@ export default function LiveOrdersPage() {
                                                                     )}
                                                                 </div>
                                                                 <div className="text-right">
-                                                                    <p className="text-sm font-black text-slate-900">₹{item.price}</p>
+                                                                    <p className="text-sm font-black text-slate-900 dark:text-white">₹{item.price}</p>
                                                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">Qty: {item.qty}</p>
                                                                 </div>
                                                             </div>
@@ -398,33 +398,33 @@ export default function LiveOrdersPage() {
                                                     </div>
                                                 ) : (
                                                     <div className="p-8 text-center opacity-50">
-                                                        <Receipt size={24} className="text-slate-300 mx-auto mb-2" />
+                                                        <Receipt size={24} className="text-slate-300 dark:text-slate-600 mx-auto mb-2" />
                                                         <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">No items ordered</p>
                                                     </div>
                                                 )}
                                             </div>
 
                                             <div className="mt-8 space-y-4">
-                                                <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                                                <div className="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Final Bill</p>
-                                                    <h5 className="text-xl font-black text-slate-900">₹{selectedOrder.structuredJson.total.toFixed(2)}</h5>
+                                                    <h5 className="text-xl font-black text-slate-900 dark:text-white">₹{selectedOrder.structuredJson.total.toFixed(2)}</h5>
                                                 </div>
                                                 {selectedOrder.status === "COMPLETED" && (
-                                                    <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center gap-3">
-                                                        <CheckCircle2 size={20} className="text-emerald-500" />
-                                                        <span className="text-xs font-bold text-emerald-700 uppercase tracking-wide">Order Confirmed</span>
+                                                    <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-100 dark:border-emerald-800/40 flex items-center gap-3">
+                                                        <CheckCircle2 size={20} className="text-emerald-500 dark:text-emerald-400" />
+                                                        <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wide">Order Confirmed</span>
                                                     </div>
                                                 )}
                                                 {selectedOrder.status === "PENDING_CALLBACK" && (
-                                                    <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100 flex items-center gap-3">
-                                                        <Clock size={20} className="text-amber-500" />
-                                                        <span className="text-xs font-bold text-amber-700 uppercase tracking-wide">Pending Callback</span>
+                                                    <div className="p-4 bg-amber-50 dark:bg-amber-950/40 rounded-2xl border border-amber-100 dark:border-amber-800/40 flex items-center gap-3">
+                                                        <Clock size={20} className="text-amber-500 dark:text-amber-400" />
+                                                        <span className="text-xs font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wide">Pending Callback</span>
                                                     </div>
                                                 )}
                                                 {selectedOrder.status === "TRANSFERRED" && (
-                                                    <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100 flex items-center gap-3">
-                                                        <Headphones size={20} className="text-orange-500" />
-                                                        <span className="text-xs font-bold text-orange-700 uppercase tracking-wide">Human Transfer</span>
+                                                    <div className="p-4 bg-orange-50 dark:bg-orange-950/40 rounded-2xl border border-orange-100 dark:border-orange-800/40 flex items-center gap-3">
+                                                        <Headphones size={20} className="text-orange-500 dark:text-orange-400" />
+                                                        <span className="text-xs font-bold text-orange-700 dark:text-orange-300 uppercase tracking-wide">Human Transfer</span>
                                                     </div>
                                                 )}
                                             </div>
@@ -433,9 +433,9 @@ export default function LiveOrdersPage() {
                                 </motion.div>
                             ) : (
                                 <div className="flex-1 flex flex-col items-center justify-center text-center p-8 opacity-40">
-                                    <PhoneIncoming size={64} className="text-slate-300 mb-6" />
-                                    <h3 className="text-2xl font-bold text-slate-900">No active calls</h3>
-                                    <p className="text-slate-500 font-medium max-w-sm mt-2">
+                                    <PhoneIncoming size={64} className="text-slate-300 dark:text-slate-600 mb-6" />
+                                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white">No active calls</h3>
+                                    <p className="text-slate-500 dark:text-slate-400 font-medium max-w-sm mt-2">
                                         {loading ? "Loading orders from database..." : "Select an order from the list to view transcripts and order details."}
                                     </p>
                                 </div>

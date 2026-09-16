@@ -25,20 +25,20 @@ export const authOptions: NextAuthOptions = {
                 }
 
                 // Hardcoded bypass for demo/development
-                if (credentials.email.toLowerCase() === "admin@petpooja.com" && credentials.password === "admin123") {
+                if (credentials.email.toLowerCase() === "admin@dineops.com" && credentials.password === "admin123") {
                     return {
                         id: "1",
                         name: "Admin User",
-                        email: "admin@petpooja.com",
+                        email: "admin@dineops.com",
                         role: "ADMIN",
                     };
                 }
 
-                if (credentials.email.toLowerCase() === "staff@petpooja.com" && credentials.password === "staff123") {
+                if (credentials.email.toLowerCase() === "staff@dineops.com" && credentials.password === "staff123") {
                     return {
                         id: "2",
                         name: "Kitchen Staff",
-                        email: "staff@petpooja.com",
+                        email: "staff@dineops.com",
                         role: "STAFF",
                     };
                 }

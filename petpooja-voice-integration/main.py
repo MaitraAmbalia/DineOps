@@ -11,14 +11,14 @@ from agent import ConversationManager
 from audio import DeepgramTranscriber, DeepgramSynthesizer, TranslatorAndLanguageDetector
 load_dotenv()
 
-app = FastAPI(title="Petpooja AI Voice Agent")
+app = FastAPI(title="Dineops AI Voice Agent")
 
 # Twilio Configuration
 TWILIO_SERVER_HOST = os.getenv("TWILIO_SERVER_HOST", "unsashed-crenulate-vince.ngrok-free.dev")
 
 @app.get("/")
 async def root():
-    return {"message": "Petpooja AI Voice Agent is running"}
+    return {"message": "Dineops AI Voice Agent is running"}
 
 @app.post("/incoming-call")
 async def incoming_call(request: Request):

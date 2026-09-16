@@ -16,9 +16,9 @@ def send_order_sms(to_number: str, order_id: str, total_price: float, call_succe
         return False
         
     if call_successful:
-        message_body = f"Thank you for your order from Petpooja!\nOrder ID: {order_id}\nTotal Bill: ₹{total_price}\nYour delicious food will be on its way shortly."
+        message_body = f"Thank you for your order from Dineops!\nOrder ID: {order_id}\nTotal Bill: ₹{total_price}\nYour delicious food will be on its way shortly."
     else:
-        message_body = "We're sorry, we couldn't complete your order from Petpooja at this time. Please try calling back later."
+        message_body = "We're sorry, we couldn't complete your order from Dineops at this time. Please try calling back later."
     
     try:
         message = client.messages.create(
